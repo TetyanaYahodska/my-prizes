@@ -1,5 +1,5 @@
 
-package com.example.demo.entity;
+package com.example.demo.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

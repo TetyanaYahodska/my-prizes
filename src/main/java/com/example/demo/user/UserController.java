@@ -1,10 +1,10 @@
-package com.example.demo.entity;
+package com.example.demo.user;
 
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-//
+//    @Autowired
+//    private UserService userService;
+////
 //    @RequestMapping("/users")
 //    public List<User> getAllUsers(){
 //        return userService.getAllUsers();
