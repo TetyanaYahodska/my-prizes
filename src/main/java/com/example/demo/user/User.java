@@ -17,14 +17,14 @@ import java.util.Collection;
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
-public class User  implements UserDetails{
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "email", length = 50, nullable = false)
+    @Column(name = "email", length = 320, nullable = false)
     private String email;
     @Column(name = "password", length = 72, nullable = false)
     private String password;
@@ -37,13 +37,8 @@ public class User  implements UserDetails{
     @Column(name = "register_date", nullable = false)
     private LocalDate registerDate;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(name = "id_user"),
-            inverseJoinColumns = @JoinColumn(name = "id_role")
-    )
-    private Role  role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public User(String firstName, String lastName, String email, Role role) {
         this.email = email;
@@ -83,9 +78,6 @@ public class User  implements UserDetails{
         return isActive;
     }
 
-    public boolean isUserAdmin() {
-        return role.getAuthority().equals("admin");
-    }
 }
 
 

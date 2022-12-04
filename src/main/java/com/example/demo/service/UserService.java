@@ -1,5 +1,7 @@
-package com.example.demo.user;
+package com.example.demo.service;
 
+import com.example.demo.Repository.UserRepository;
+import com.example.demo.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
