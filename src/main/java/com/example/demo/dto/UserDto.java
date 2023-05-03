@@ -1,13 +1,11 @@
 package com.example.demo.dto;
 
-import com.example.demo.validation.PasswordMatches;
-import com.example.demo.validation.ValidEmail;
-import com.example.demo.validation.ValidPassword;
+import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@PasswordMatches
+@Data
 public class UserDto {
     @NotNull
     @Size(min = 1, message = "{Size.userDto.firstName}")
@@ -17,18 +15,9 @@ public class UserDto {
     @Size(min = 1, message = "{Size.userDto.lastName}")
     private String lastName;
 
-    @ValidPassword
-    private String password;
-
-    @NotNull
-    @Size(min = 1)
-    private String matchingPassword;
-
-    @ValidEmail
     @NotNull
     @Size(min = 1, message = "{Size.userDto.email}")
     private String email;
-
 
     private Integer role;
 
@@ -39,7 +28,6 @@ public class UserDto {
     public void setEmail(final String email) {
         this.email = email;
     }
-
 
     public Integer getRole() {
         return role;
@@ -64,20 +52,6 @@ public class UserDto {
     public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-
-    public String getMatchingPassword() {
-        return matchingPassword;
-    }
-
-    public void setMatchingPassword(final String matchingPassword) {
-        this.matchingPassword = matchingPassword;
-    }
-
 
     @Override
     public String toString() {
