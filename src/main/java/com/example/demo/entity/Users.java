@@ -1,23 +1,20 @@
 
-package com.example.demo.user;
+package com.example.demo.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
-public class User implements UserDetails {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,44 +37,37 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public User(String firstName, String lastName, String email, Role role) {
+    public Users(String email, String password, String firstName, String lastName, boolean isActive, Role role) {
         this.email = email;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.isActive = isActive;
         this.registerDate = LocalDateTime.now().toLocalDate();
         this.role = role;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
     public String getUsername() {
         return email;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public String getPassword(){
+        return this.password;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
+    public void setId(Integer id) {
+        this.id = id;
     }
-
-    @Override
-    public boolean isEnabled() {
-        return isActive;
-    }
-
 }
 
 
