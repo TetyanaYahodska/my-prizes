@@ -1,6 +1,6 @@
 package com.example.demo.service.tasks;
 
-import com.example.demo.dao.tasks.TasksRepository;
+import com.example.demo.repository.tasks.TasksRepository;
 import com.example.demo.entity.Tasks;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

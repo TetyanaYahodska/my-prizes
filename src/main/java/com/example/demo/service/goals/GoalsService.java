@@ -1,6 +1,6 @@
 package com.example.demo.service.goals;
 
-import com.example.demo.dao.goals.GoalsRepository;
+import com.example.demo.repository.goals.GoalsRepository;
 import com.example.demo.entity.Goals;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.demo.dao.tasks;
+package com.example.demo.repository.tasks;
 
 import com.example.demo.entity.Tasks;
 import org.springframework.data.repository.CrudRepository;

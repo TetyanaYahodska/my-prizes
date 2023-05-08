@@ -1,6 +1,6 @@
-package com.example.demo.dao.user;
+package com.example.demo.repository.goals;
 
-import com.example.demo.entity.Users;
+import com.example.demo.entity.Goals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,30 +10,29 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class UserDAOImpl implements UserDAO {
+public class GoalsDAOImpl implements GoalsDAO{
+
     @Autowired
     private EntityManager entityManager;
 
-    public UserDAOImpl(EntityManager entityManager) {
+    public GoalsDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
     @Override
     @Transactional
-    public void save(Users theUser) {
-        entityManager.persist(theUser);
+    public void save(Goals theGoals) {
+        entityManager.persist(theGoals);
     }
 
     @Override
-    public Users findById(Integer id) {
-
-        return entityManager.find(Users.class, id);
+    public Goals findById(Integer id) {
+        return entityManager.find(Goals.class, id);
     }
 
     @Override
-    public List<Users> findAll() {
-        TypedQuery<Users> theQuery = entityManager.createQuery("FROM User", Users.class);
+    public List<Goals> findAll() {
+        TypedQuery<Goals> theQuery = entityManager.createQuery("FROM Goals", Goals.class);
         return theQuery.getResultList();
     }
-
 }

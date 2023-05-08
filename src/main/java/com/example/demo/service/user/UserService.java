@@ -1,6 +1,6 @@
 package com.example.demo.service.user;
 
-import com.example.demo.dao.user.UserRepository;
+import com.example.demo.repository.user.UserRepository;
 import com.example.demo.entity.Users;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

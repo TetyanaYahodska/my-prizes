@@ -1,4 +1,4 @@
-package com.example.demo.dao.goals;
+package com.example.demo.repository.goals;
 
 import com.example.demo.entity.Goals;
 

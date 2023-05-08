@@ -1,8 +1,8 @@
 package com.example.demo;
 
-import com.example.demo.dao.goals.GoalsDAO;
-import com.example.demo.dao.tasks.TasksDAO;
-import com.example.demo.dao.user.UserDAO;
+import com.example.demo.repository.goals.GoalsDAO;
+import com.example.demo.repository.tasks.TasksDAO;
+import com.example.demo.repository.user.UserDAO;
 import com.example.demo.entity.Goals;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.Tasks;
