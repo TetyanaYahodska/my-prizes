@@ -1,11 +1,11 @@
 package com.example.demo.repository.tasks;
 
-import com.example.demo.entity.Tasks;
+import com.example.demo.entity.Task;
 
 import java.util.List;
 
 public interface TasksDAO {
-    void save (Tasks theTasks);
-    Tasks findById (Integer id);
-    List<Tasks> findAll();
+    void save (Task theTasks);
+    Task findById (Integer id);
+    List<Task> findAll();
 }

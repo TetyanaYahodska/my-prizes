@@ -2,11 +2,11 @@ package com.example.demo;
 
 import com.example.demo.repository.goals.GoalsDAO;
 import com.example.demo.repository.tasks.TasksDAO;
-import com.example.demo.repository.user.UserDAO;
-import com.example.demo.entity.Goals;
+import com.example.demo.entity.Goal;
 import com.example.demo.entity.Role;
-import com.example.demo.entity.Tasks;
-import com.example.demo.entity.Users;
+import com.example.demo.entity.Task;
+import com.example.demo.entity.User;
+import com.example.demo.service.user.UserService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,8 +20,8 @@ public class MyPrizesApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(UserDAO userDAO) {
-		return runner -> createMultipleUsers(userDAO);
+	public CommandLineRunner commandLineRunner(UserService userService) {
+		return runner -> createMultipleUsers(userService);
 
 	}
 
@@ -36,11 +36,11 @@ public class MyPrizesApplication {
 	}
 
 	private void createMultipleGoals(GoalsDAO goalsDAO) {
-	Goals tempGoals1 = new Goals( "Cake",25);
-	Goals tempGoals2 = new Goals("Aquapark",60);
-	Goals tempGoals3 = new Goals("Lazy day",100);
-	Goals tempGoals4 = new Goals("Football",50);
-	Goals tempGoals5 = new Goals("Surprise",150);
+	Goal tempGoals1 = new Goal( "Cake",25);
+	Goal tempGoals2 = new Goal("Aquapark",60);
+	Goal tempGoals3 = new Goal("Lazy day",100);
+	Goal tempGoals4 = new Goal("Football",50);
+	Goal tempGoals5 = new Goal("Surprise",150);
 		goalsDAO.save(tempGoals1);
 		goalsDAO.save(tempGoals2);
 		goalsDAO.save(tempGoals3);
@@ -49,11 +49,11 @@ public class MyPrizesApplication {
 	}
 
 	private void createMultipleTasks(TasksDAO tasksDAO) {
-		Tasks tempTasks1 = new Tasks( "First",10);
-		Tasks tempTasks2 = new Tasks("Second", 15);
-		Tasks tempTasks3 = new Tasks("Easy", 20);
-		Tasks tempTasks4 = new Tasks("Hard",60);
-		Tasks tempTasks5 = new Tasks("Easy-peasy",5);
+		Task tempTasks1 = new Task( "First",10);
+		Task tempTasks2 = new Task("Second", 15);
+		Task tempTasks3 = new Task("Easy", 20);
+		Task tempTasks4 = new Task("Hard",60);
+		Task tempTasks5 = new Task("Easy-peasy",5);
 		tasksDAO.save(tempTasks1);
 		tasksDAO.save(tempTasks2);
 		tasksDAO.save(tempTasks3);
@@ -62,13 +62,19 @@ public class MyPrizesApplication {
 	}
 
 
-	private void createMultipleUsers(UserDAO userDAO) {
-		Users tempUser1 = new Users("paul@gmail.com", "123qwe", "Jon", "Doe", true, Role.ADMIN);
-		Users tempUser2 = new Users("den@gmail.com", "456qwe", "Den", "Dick", true, Role.USER);
-		Users tempUser3 = new Users("mary@gmail.com", "789qwe", "Mary", "Subby", true, Role.USER);
-		userDAO.save(tempUser1);
-		userDAO.save(tempUser2);
-		userDAO.save(tempUser3);
+	private void createMultipleUsers(UserService userService) {
+		User tempUser1 = new User("paul@gmail.com", "123qwe", "Jon", "Doe", true, Role.ADMIN);
+		User tempUser2 = new User("den@gmail.com", "456qwe", "Den", "Dick", true, Role.USER);
+		User tempUser3 = new User("mary@gmail.com", "109fred", "Mary", "Subby", true, Role.USER);
+		User tempUser4 = new User("olga@gmail.com", "485kdns", "Olga", "Mud", true, Role.USER);
+		User tempUser5 = new User("nik@gmail.com", "877vhd", "Nik", "Finger", true, Role.USER);
+		User tempUser6 = new User("luca@gmail.com", "974szdhfgh", "Luka", "Inet", true, Role.USER);
+		userService.save(tempUser1);
+		userService.save(tempUser2);
+		userService.save(tempUser3);
+		userService.save(tempUser4);
+		userService.save(tempUser5);
+		userService.save(tempUser6);
 	}
 
 }

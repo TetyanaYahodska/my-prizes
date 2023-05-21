@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.Role;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -19,7 +20,7 @@ public class UserDto {
     @Size(min = 1, message = "{Size.userDto.email}")
     private String email;
 
-    private Integer role;
+    private Role role;
 
     public String getEmail() {
         return email;
@@ -29,11 +30,11 @@ public class UserDto {
         this.email = email;
     }
 
-    public Integer getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(final Integer role) {
+    public void setRole(final Role role) {
         this.role = role;
     }
 
@@ -67,4 +68,11 @@ public class UserDto {
         return builder.toString();
     }
 
+    public String getPassword() {
+        return "Password";
+    }
+
+    public String getRepeatPassword() {
+        return "Password";
+    }
 }

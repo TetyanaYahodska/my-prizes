@@ -1,19 +1,19 @@
 package com.example.demo.service.tasks;
 
-import com.example.demo.entity.Tasks;
+import com.example.demo.entity.Task;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface ITasksService {
 
-    List<Tasks> getAllTasks();
+    List<Task> getAllTasks();
 
     void deleteTask(int id);
 
-    void addTask(Tasks tasks);
+    void addTask(Task tasks);
 
-    void updateTask(Tasks tasks);
+    void updateTask(Task tasks);
 
-    ResponseEntity<Tasks> getTask(Integer id);
+    ResponseEntity<Task> getTask(Integer id);
 }

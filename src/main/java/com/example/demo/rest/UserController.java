@@ -1,7 +1,7 @@
 package com.example.demo.rest;
 
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Users;
+import com.example.demo.entity.User;
 import com.example.demo.service.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class UserController {
 
     @RequestMapping("/users/{usersId}")
     public ResponseEntity<UserDto> getUser(@PathVariable int id) {
-        Users user = userService.findById(id);
+        User user = userService.findById(id);
 
         UserDto userResponce = modelMapper.map(user, UserDto.class);
         return ResponseEntity.ok().body(userResponce);
@@ -42,8 +42,8 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
-        Users userRequest = modelMapper.map(userDto, Users.class);
-        Users user = userService.save(userRequest);
+        User userRequest = modelMapper.map(userDto, User.class);
+        User user = userService.save(userRequest);
         UserDto userResponse = modelMapper.map(user, UserDto.class);
 
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
@@ -51,16 +51,22 @@ public class UserController {
 
     @PutMapping("/users")
     public ResponseEntity<UserDto> updateUser(@PathVariable int id, @RequestBody UserDto userDto) {
-        Users userRequest = modelMapper.map(userDto, Users.class);
-        Users user = userService.updateUser(id, userRequest);
+        User userRequest = modelMapper.map(userDto, User.class);
+        User user = userService.updateUser(id, userRequest);
         UserDto userResponse = modelMapper.map(user, UserDto.class);
 
         return ResponseEntity.ok().body(userResponse);
     }
 
     @DeleteMapping("/users/{usersId}")
-    public void deleteUser(@PathVariable int id) {
-        userService.deleteById(id);
+    public String deleteUser(@PathVariable int userId) {
+        User tempUser = userService.findById(userId);
+        if(tempUser == null) {
+            throw new RuntimeException("User id not found - " +userId);
+        }
+
+        userService.deleteById(userId);
+        return "Deleted user id - " + userId;
     }
 
 }

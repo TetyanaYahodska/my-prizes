@@ -1,6 +1,6 @@
 package com.example.demo.repository.tasks;
 
-import com.example.demo.entity.Tasks;
+import com.example.demo.entity.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,18 +20,18 @@ public class TasksDAOImpl implements TasksDAO {
 
     @Override
     @Transactional
-    public void save(Tasks theTasks) {
+    public void save(Task theTasks) {
         entityManager.persist(theTasks);
     }
 
     @Override
-    public Tasks findById(Integer id) {
-        return entityManager.find(Tasks.class, id);
+    public Task findById(Integer id) {
+        return entityManager.find(Task.class, id);
     }
 
     @Override
-    public List<Tasks> findAll() {
-        TypedQuery<Tasks> theQuery = entityManager.createQuery("FROM Tasks", Tasks.class);
+    public List<Task> findAll() {
+        TypedQuery<Task> theQuery = entityManager.createQuery("FROM Tasks", Task.class);
         return theQuery.getResultList();
     }
 }

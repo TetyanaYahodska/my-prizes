@@ -1,19 +1,19 @@
 package com.example.demo.service.goals;
 
-import com.example.demo.entity.Goals;
+import com.example.demo.entity.Goal;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface IGoalsService {
-    List<Goals> getAllGoals();
+    List<Goal> getAllGoals();
 
     void deleteGoal(int id);
 
-    void addGoal(Goals goals);
+    void addGoal(Goal goals);
 
-    void updateGoal(Goals goals);
+    void updateGoal(Goal goals);
 
 
-    ResponseEntity<Goals> getGoal(Integer id);
+    ResponseEntity<Goal> getGoal(Integer id);
 }

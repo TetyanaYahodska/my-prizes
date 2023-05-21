@@ -1,7 +1,7 @@
 package com.example.demo.service.user;
 
 import com.example.demo.repository.user.UserRepository;
-import com.example.demo.entity.Users;
+import com.example.demo.entity.User;
 import com.example.demo.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ import java.util.Optional;
 @Service
 public class UserService implements IUserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    private List<Users> users = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -23,15 +23,15 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<Users> findAll() {
+    public List<User> findAll() {
         userRepository.findAll()
                 .forEach(users::add);
         return users;
     }
 
     @Override
-    public Users findById(int id) {
-        Optional<Users> user = userRepository.findById(id);
+    public User findById(int id) {
+        Optional<User> user = userRepository.findById(id);
         if(user.isPresent()) {
             return user.get();
         }else {
@@ -40,8 +40,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Users updateUser(int id, Users user) {
-        Users tempUser = userRepository.findById(id)
+    public User updateUser(int id, User user) {
+        User tempUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
 
         tempUser.setPassword(user.getPassword());
@@ -57,7 +57,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Users save(Users theUser) {
+    public User save(User theUser) {
         return userRepository.save(theUser);
     }
 

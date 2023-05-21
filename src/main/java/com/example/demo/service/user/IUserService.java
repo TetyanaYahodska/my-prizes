@@ -1,18 +1,18 @@
 package com.example.demo.service.user;
 
 import java.util.List;
-import com.example.demo.entity.Users;
+import com.example.demo.entity.User;
 
 public interface IUserService {
 
-    List<Users> findAll();
+    List<User> findAll();
 
     void deleteById(int id);
 
-    Users save(Users user);
+    User save(User user);
 
-    Users findById(int id);
+    User findById(int id);
 
-    Users updateUser(int id, Users user);
+    User updateUser(int id, User user);
 
 }

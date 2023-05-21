@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Table(name = "users")
 @NoArgsConstructor
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Users {
 
     @Column(name = "email", length = 320, nullable = false)
     private String email;
-    @Column(name = "password", length = 72, nullable = false)
+    @Column(name = "password", length = 68, nullable = false)
     private String password;
     @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
@@ -37,7 +37,7 @@ public class Users {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    public Users(String email, String password, String firstName, String lastName, boolean isActive, Role role) {
+    public User(String email, String password, String firstName, String lastName, boolean isActive, Role role) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;

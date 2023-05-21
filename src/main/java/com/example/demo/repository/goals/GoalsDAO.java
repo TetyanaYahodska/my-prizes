@@ -1,11 +1,11 @@
 package com.example.demo.repository.goals;
 
-import com.example.demo.entity.Goals;
+import com.example.demo.entity.Goal;
 
 import java.util.List;
 
 public interface GoalsDAO {
-    void save (Goals theGoals);
-    Goals findById (Integer id);
-    List<Goals> findAll();
+    void save (Goal theGoals);
+    Goal findById (Integer id);
+    List<Goal> findAll();
 }

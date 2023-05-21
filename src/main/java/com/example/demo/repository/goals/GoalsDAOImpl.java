@@ -1,6 +1,6 @@
 package com.example.demo.repository.goals;
 
-import com.example.demo.entity.Goals;
+import com.example.demo.entity.Goal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,18 +21,18 @@ public class GoalsDAOImpl implements GoalsDAO{
 
     @Override
     @Transactional
-    public void save(Goals theGoals) {
+    public void save(Goal theGoals) {
         entityManager.persist(theGoals);
     }
 
     @Override
-    public Goals findById(Integer id) {
-        return entityManager.find(Goals.class, id);
+    public Goal findById(Integer id) {
+        return entityManager.find(Goal.class, id);
     }
 
     @Override
-    public List<Goals> findAll() {
-        TypedQuery<Goals> theQuery = entityManager.createQuery("FROM Goals", Goals.class);
+    public List<Goal> findAll() {
+        TypedQuery<Goal> theQuery = entityManager.createQuery("FROM Goals", Goal.class);
         return theQuery.getResultList();
     }
 }

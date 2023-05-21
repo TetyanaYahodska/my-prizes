@@ -1,8 +1,8 @@
 package com.example.demo.config;
 
-import com.example.demo.entity.Goals;
-import com.example.demo.entity.Tasks;
-import com.example.demo.entity.Users;
+import com.example.demo.entity.Goal;
+import com.example.demo.entity.Task;
+import com.example.demo.entity.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.modelmapper.ModelMapper;
@@ -11,18 +11,18 @@ import org.modelmapper.ModelMapper;
 public class SpringConfig {
 
     @Bean
-    public Goals getGoals() {
-        return new Goals();
+    public Goal getGoals() {
+        return new Goal();
     }
 
     @Bean
-    public Tasks getTasks() {
-        return new Tasks();
+    public Task getTasks() {
+        return new Task();
     }
 
     @Bean
-    public Users getUser() {
-        return new Users();
+    public User getUser() {
+        return new User();
     }
 
     @Bean

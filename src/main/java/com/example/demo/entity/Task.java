@@ -7,13 +7,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Setter
 @Getter
 @Entity
-@Table(name = "goals")
+@Table(name = "tasks")
 @NoArgsConstructor
-@EqualsAndHashCode(of = "goals")
-public class Goals {
+@EqualsAndHashCode(of = "task")
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,9 +24,12 @@ public class Goals {
 
     @Column(name = "value", length = 3, nullable = false)
     private Integer value;
-    public Goals(String name, Integer value) {
+
+    public Task(String name, Integer value) {
         this.name = name;
         this.value = value;
     }
-}
 
+
+
+}
